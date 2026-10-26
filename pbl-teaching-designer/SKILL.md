@@ -4,9 +4,6 @@ description: "辅助中小学教师进行跨学科 PBL（项目式/主题式）�
 tools:
 - get_current_time
 - query_knowledge
-- glob
-- grep
-- read
 - read_file
 - recognize_image
 - recognize_document

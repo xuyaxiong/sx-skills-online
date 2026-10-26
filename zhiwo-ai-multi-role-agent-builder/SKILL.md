@@ -28,9 +28,6 @@ input_schema:
 
 tools:
   - get_current_time
-  - glob
-  - grep
-  - read
   - read_file
   - recognize_image
   - recognize_document

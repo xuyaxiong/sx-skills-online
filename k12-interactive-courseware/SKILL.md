@@ -1,6 +1,6 @@
 ---
 name: k12-interactive-courseware
-description: "K12 全学段全学科通用互动课件生成器。支持 input_schema 系统入参（已有教案、学科、学段、章节名称、学生学情）：入参已给的项直接读取采用、不再询问，仅就课堂用途向教师确认；无入参或入参不全时按「学段 → 学科 → 课题 → 课堂用途」固定顺序逐条提问（一次只问一个），课堂用途依据课题给出推荐并须用户确认，四项齐备后才生成；再按学科加载专属参考，产出符合部署方资源白名单与 iframe 硬约束的高质量单文件互动课件 HTML。覆盖语文、数学、英语、物理、化学、生物、小学科学、历史、地理、道德与法治、音乐、美术、体育与健康、信息科技、综合实践等全部学科以及跨学科主题学习。视觉采用统一品牌色与左画布右面板布局，平面用 SVG 或 Canvas，立体用白名单版本的 Three.js，支持鼠标与触摸，适配教室一体机、电脑、平板与 iframe 嵌入。This skill should be used whenever the user asks to build an interactive courseware / teaching page / 互动课件 / 互动网页 / 教学演示页面 for any K12 grade and any subject, including 导入激趣、新知探究、巩固练习、复习测评 四类课堂用途。当用户只说做一个 XX 课件或网页而未指定具体学科技能时，也应优先触发本技能。"
+description: "K12 全学段全学科通用互动课件生成器。按学科加载专属参考，产出符合部署方资源白名单与 iframe 硬约束的高质量单文件互动课件 HTML。覆盖语文、数学、英语、物理、化学、生物、小学科学、历史、地理、道德与法治、音乐、美术、体育与健康、信息科技、综合实践等全部学科以及跨学科主题学习。视觉采用统一品牌色与左画布右面板布局，平面用 SVG 或 Canvas，立体用白名单版本的 Three.js，支持鼠标与触摸，适配教室一体机、电脑、平板与 iframe 嵌入。This skill should be used whenever the user asks to build an interactive courseware / teaching page / 互动课件 / 互动网页 / 教学演示页面 for any K12 grade and any subject, including 导入激趣、新知探究、巩固练习、复习测评 四类课堂用途。当用户只说做一个 XX 课件或网页而未指定具体学科技能时，也应优先触发本技能。"
 input_schema:
   type: object
   properties:
@@ -28,9 +28,6 @@ tools:
 - get_current_time
 - query_knowledge
 - fetch_url
-- glob
-- grep
-- read
 - read_file
 - recognize_image
 - recognize_document
