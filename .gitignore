@@ -1,0 +1,19 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*~
+
+# Archives / temp
+*.zip
+*.tar.gz
+*.tmp
+~$*
+
+# Claude Code local settings
+.claude/settings.local.json
