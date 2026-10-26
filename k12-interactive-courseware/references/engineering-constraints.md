@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 - **`content` 首尾不加任何包裹**：不要代码围栏、不要 `<![CDATA[` 或任何其他标记——`content` 从**顶部注释的 `<!--`** 或 `<!DOCTYPE html>` 直接开始，到 `</html>` 结束
 - `media_type` 传 `text/html`，`name` 用课题名，`summary` 写一两句课件梗概
-- **不要把 HTML 写进回复正文，也不要输出 Markdown 代码块**——正文教师看不到，课件只有走 `create_artifact` 才到得了他手里
+- **不要把 HTML 写进回复正文，也不要输出 Markdown 代码块**——课件只有走 `create_artifact` 才到得了他手里，回复正文留给使用说明等面向教师的话
 - 教学目标实现、学生指南、教师建议、关键假设和自检结果写入 HTML **顶部注释**
 - 页面内提供简短可见的学生使用说明
 - `<head>` 包含 UTF-8、viewport 和标题；自定义 CSS 统一写在 `<style>`

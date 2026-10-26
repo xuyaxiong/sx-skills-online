@@ -242,7 +242,7 @@
 
 **基础参数包**：年级、主学科、跨学科组合、教材版本、学情、总课时数 —— 在入口处**一次性采集，全程继承，绝不再问**。
 
-**输出纪律**：全程静默，只有三个时刻允许输出文字 —— ① 用 `show_content` 呈现阶段 1–6 中间成果；② 用 `request_user_input` 提问（**一次只问一个决策点**，成组参数采集可一次问完）；③ 用 `create_artifact` 交付阶段 7 的完整教案（**本次调用唯一产物**）。
+**输出纪律**：全程静默，只有三个时刻允许输出文字 —— ① 在回复正文里呈现阶段 1–6 中间成果；② 用 `request_user_input` 提问（**一次只问一个决策点**，成组参数采集可一次问完）；③ 用 `create_artifact` 交付阶段 7 的完整教案（**本次调用唯一产物**）。交付与提问不要放在同一条消息里。
 
 **关键红线**
 
@@ -384,12 +384,13 @@ sx-skills-online/
 
 ### 产物交付机制
 
-| 工具 | 用途 |
+| 出口 | 用途 |
 |---|---|
-| `create_artifact` | 交付最终产物（教案 / 导学单 / 课件 / 智能体配置）。**正文必须走此通道，写进回复文本等于未交付** |
-| `show_content` | 呈现中间成果与使用说明，只呈现不等待答复 |
+| 回复正文 | 呈现中间成果、进度与使用说明——写在正文里用户直接看得见 |
+| `create_artifact` | 交付最终产物（教案 / 导学单 / 课件 / 智能体配置）。**产物只能走此通道，留在对话里等于未交付** |
 | `request_user_input` | 一切面向用户的提问与需确认内容，**一次只问一个问题** |
-| `finish_task` | 结束本轮任务 |
+
+交付与提问不要放在同一条消息里：先交付、拿到结果再提问。
 
 ### 输出纪律
 
@@ -427,13 +428,13 @@ sx-skills-online/
 2. **手动调用** — 在支持 Skill 机制的 Agent 客户端中按名称调用，如 `/ljy-lesson-prep`、`/k12-interactive-courseware`
 3. **携带入参调用** — 按各 Skill frontmatter 中的 `input_schema` 传入结构化参数；参数已给的项将被直接采用，不再重复询问
 
-**依赖的运行时工具**（由平台提供，非本仓库内容）：`create_artifact`、`show_content`、`request_user_input`、`finish_task`、`get_current_time`、`query_knowledge`、`fetch_url`、`recognize_image`、`recognize_document`、`glob`、`grep`、`read`。
+**依赖的运行时工具**（由平台提供，非本仓库内容）：`create_artifact`、`request_user_input`、`get_current_time`、`query_knowledge`、`fetch_url`、`recognize_image`、`recognize_document`、`glob`、`grep`、`read`。
 
 ---
 
 ## 维护指引
 
-- **新增或改造技能前先读 [`docs/SKILL_AUTHORING_GUIDE.md`](docs/SKILL_AUTHORING_GUIDE.md)** —— 平台机制、六件事、出口判据、打包上传与提交前自检清单都在那里；第九节列出了本仓库现状与平台口径的差异
+- **新增或改造技能前先读 [`docs/SKILL_AUTHORING_GUIDE.md`](docs/SKILL_AUTHORING_GUIDE.md)** —— 平台机制、五件事、出口判据、打包上传与提交前自检清单都在那里；第九节列出了本仓库现状与平台口径的差异
 - **改动的分支与提交遵循 [`docs/BRANCH_STRATEGY.md`](docs/BRANCH_STRATEGY.md)** —— 线性历史（`--ff-only`）、特性分支只在本地、远端只保留 `main` / `dev` 两条长期分支
 - **修改 `SKILL.md` 的 `description` 与 `input_schema` 时保持同步** —— `description` 决定技能何时被触发，`input_schema` 决定入参如何映射到提问流程
 - **`references/` 内的规则存在优先级层级** —— 例如 `pbl-teaching-designer` 的 `global-rules.md` 第零节为最高优先级，`ljy-lesson-prep` 的 `template-fidelity.md` 在模版有效时优先于其余所有参考文件。改动前先确认优先级关系
