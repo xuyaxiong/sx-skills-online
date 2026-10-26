@@ -333,6 +333,8 @@ graph TD
 ```
 sx-skills-online/
 ├── README.md
+├── docs/
+│   └── SKILL_AUTHORING_GUIDE.md   # Skill 编写指南（新增 / 改造技能前先读）
 ├── ljy-lesson-prep/
 │   ├── SKILL.md
 │   └── references/
@@ -430,6 +432,7 @@ sx-skills-online/
 
 ## 维护指引
 
+- **新增或改造技能前先读 [`docs/SKILL_AUTHORING_GUIDE.md`](docs/SKILL_AUTHORING_GUIDE.md)** —— 平台机制、六件事、出口判据、打包上传与提交前自检清单都在那里；第九节列出了本仓库现状与平台口径的差异
 - **修改 `SKILL.md` 的 `description` 与 `input_schema` 时保持同步** —— `description` 决定技能何时被触发，`input_schema` 决定入参如何映射到提问流程
 - **`references/` 内的规则存在优先级层级** —— 例如 `pbl-teaching-designer` 的 `global-rules.md` 第零节为最高优先级，`ljy-lesson-prep` 的 `template-fidelity.md` 在模版有效时优先于其余所有参考文件。改动前先确认优先级关系
 - **跨文件引用需一并更新** —— 多个 Skill 间存在显式协作声明（如 `pbl-teaching-designer` 第七节），改动技能名称或边界时同步检查
