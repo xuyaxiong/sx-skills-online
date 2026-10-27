@@ -242,7 +242,7 @@
 
 **基础参数包**：年级、主学科、跨学科组合、教材版本、学情、总课时数 —— 在入口处**一次性采集，全程继承，绝不再问**。
 
-**输出纪律**：全程静默，只有三个时刻允许输出文字 —— ① 在回复正文里呈现阶段 1–6 中间成果；② 用 `request_user_input` 提问（**一次只问一个决策点**，成组参数采集可一次问完）；③ 用 `create_artifact` 交付阶段 7 的完整教案（**本次调用唯一产物**）。交付与提问不要放在同一条消息里。
+**输出纪律**：全程静默，只有三个时刻允许输出文字 —— ① 在回复正文里呈现阶段 1–6 中间成果；② 在回复正文里提问（**一次只问一个决策点**，成组参数采集可一次问完）；③ 用 `create_artifact` 交付阶段 7 的完整教案（**本次调用唯一产物**）。
 
 **关键红线**
 
@@ -386,11 +386,8 @@ sx-skills-online/
 
 | 出口 | 用途 |
 |---|---|
-| 回复正文 | 呈现中间成果、进度与使用说明——写在正文里用户直接看得见 |
+| 回复正文 | 呈现中间成果、进度与使用说明，以及一切面向用户的提问与需确认内容（**一次只问一个问题**）——写在正文里用户直接看得见 |
 | `create_artifact` | 交付最终产物（教案 / 导学单 / 课件 / 智能体配置）。**产物只能走此通道，留在对话里等于未交付** |
-| `request_user_input` | 一切面向用户的提问与需确认内容，**一次只问一个问题** |
-
-交付与提问不要放在同一条消息里：先交付、拿到结果再提问。
 
 ### 输出纪律
 
@@ -428,7 +425,7 @@ sx-skills-online/
 2. **手动调用** — 在支持 Skill 机制的 Agent 客户端中按名称调用，如 `/ljy-lesson-prep`、`/k12-interactive-courseware`
 3. **携带入参调用** — 按各 Skill frontmatter 中的 `input_schema` 传入结构化参数；参数已给的项将被直接采用，不再重复询问
 
-**依赖的运行时工具**（由平台提供，非本仓库内容）：`create_artifact`、`request_user_input`、`get_current_time`、`query_knowledge`、`fetch_url`、`recognize_image`、`recognize_document`、`glob`、`grep`、`read`。
+**依赖的运行时工具**（由平台提供，非本仓库内容）：`create_artifact`、`get_current_time`、`query_knowledge`、`fetch_url`、`recognize_image`、`recognize_document`、`glob`、`grep`、`read`。
 
 ---
 
